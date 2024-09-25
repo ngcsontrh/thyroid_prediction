@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+2<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -6,18 +6,18 @@
         <title>Document</title>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="aKhôngnymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="aKhôngnymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     </head>
     <body>
         <header>
             <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
                 <div class="col-lg-6 px-0">
                   <h1 class="display-4 fst-italic">Khảo sát bệnh ung thư tuyến giáp</h1>
-                </div>
-            </div>
+                  
         </header>
         <main style="font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 20px;">
           <div style=" max-height: auto; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-              <form>
+              <form id="predictionForm">
                 <div>
                     <div
                         class="alert alert-primary"
@@ -25,10 +25,11 @@
                     >
                         <strong>Vui lòng nhập thông tin đầy đủ</strong> 
                     </div>
+                    
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">1/ Tên bạn là gì ?</label>
+                    <label for="exampleFormControlInput1" class="form-label" >Tên bạn là gì ?</label>
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <input type="text" id="name" class="form-control" aria-describedby="passwordHelpInline">
@@ -36,135 +37,143 @@
                 </div><br>
                 
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">2/ Tuổi của bạn ?</label>
+                    <label for="exampleFormControlInput1" class="form-label">Tuổi của bạn ?</label>
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <input type="text" id="age" class="form-control" aria-describedby="passwordHelpInline">
                         </div>
-                    
+                </div><br>
+
+                <div class="mb-3"></div>
+                    <label style="font-size: 18px; color: #555;">Giới tính</label><br>
+                    <input type="radio" id="sex" name="sex" value="F" style="margin-top: 10px ;">
+                    <label for="on_thryoxin" style="font-size: 16px;">Nữ</label><br>
+                    <input type="radio" id="sex" name="sex" value="M" style="margin-top: 10px; ">
+                    <label for="on_thryoxin" style="font-size: 16px;">Nam</label>
                 </div><br>
                             
                   <div style="margin-bottom: 20px;">
                       <label style="font-size: 18px; color: #555;">1 /Bạn có đang sử dụng thuốc thyroxine không?</label><br>
-                      <input type="radio" id="on_thyroxine" value="true" style="margin-top: 10px ;">
-                      <label for="1" style="font-size: 16px;">Có</label><br>
-                      <input type="radio" id="on_thyroxine" value="false" style="margin-top: 10px; ">
-                      <label for="0" style="font-size: 16px;">Không</label>
+                      <input type="radio" id="on_thryoxin" name="on_thryoxin" value="t" style="margin-top: 10px ;">
+                      <label for="on_thryoxin" style="font-size: 16px;">Có</label><br>
+                      <input type="radio" id="on_thryoxin" name="on_thryoxin" value="f" style="margin-top: 10px; ">
+                      <label for="on_thryoxin" style="font-size: 16px;">Không</label>
                   </div>
                     
                   <div style="margin-bottom: 20px;">
                     <label style="font-size: 18px; color: #555;">2 /Bạn có đang nghi ngờ việc sử dụng thuốc thyroxine không? </label><br>
-                    <input type="radio" id="query_on_thyroxine" value="true" style="margin-top: 10px;">
+                    <input type="radio" id="query_on_hyroxine" name="query_on_hyroxine" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="query_on_thyroxine" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="query_on_hyroxine" name="query_on_hyroxine" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 18px; color: #555;">3 /Bạn có đang sử dụng thuốc chống cường giáp không? </label><br>
-                    <input type="radio" id="on_antithyroid_medication" value="true" style="margin-top: 10px;">
+                    <input type="radio" id="on_antithyroid_medication" name="on_antithyroid_medication" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="on_antithyroid_medication" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="on_antithyroid_medication" name="on_antithyroid_medication" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
     
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 18px; color: #555;">4 /Bạn có bị bệnh không ? </label><br>
-                    <input type="radio" id="sick" value="true" style="margin-top: 10px;">
+                    <input type="radio" id="sick" name="sick" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="sick" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="sick" name="sick" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 18px; color: #555;">5 /Bạn có đang mang thai không? </label><br>
-                    <input type="radio" id="pregnant" value="true" style="margin-top: 10px;">
+                    <input type="radio" id="pregnant" name="pregnant" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="pregnant" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="pregnant" name="pregnant" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 18px; color: #555;">6 /Bạn đã từng phẫu thuật tuyến giáp chưa? </label><br>
-                    <input type="radio" id="thyroid_surgery" value="true" style="margin-top: 10px;">
+                    <input type="radio" id="thyroid_surgery" name="thyroid_surgery" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="thyroid_surgery" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="thyroid_surgery" name="thyroid_surgery" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 18px; color: #555;">7 /Bạn có từng điều trị bằng I131 không?  </label><br>
-                    <input type="radio" id="I131_treatment" value="true" style="margin-top: 10px;">
+                    <input type="radio" id="I131_treatment" name="I131_treatment" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="I131_treatment" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="I131_treatment" name="I131_treatment" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 18px; color: #555;">8 /Bạn có đang nghi ngờ bị suy giáp không? </label><br>
-                    <input type="radio" id="query_hypothyroid" value="true" style="margin-top: 10px;">
+                    <input type="radio" id="query_hypothyroid" name="query_hypothyroid" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="query_hypothyroid" value="false" style="margin-top: 10px;">
-                    <label for="0" style="font-size: 16px;">Không</label>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">10 /Bạn có đang nghi ngờ bị cường giáp không?  </label><br>
-                    <input type="radio" id="query_hyperthyroid" value="true" style="margin-top: 10px;">
-                    <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="query_hyperthyroid" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="query_hypothyroid" name="query_hypothyroid" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">9 /Bạn có đang sử dụng lithium không?</label><br>
-                    <input type="radio" id="lithium" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">9 /Bạn có bị cường giáp không</label><br>
+                    <input type="radio" id="query_hyperthyroid" name="query_hyperthyroid" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="lithium" value="false" style="margin-top: 10px;">
-                    <label for="0" style="font-size: 16px;">Không</label>
-                </div>
-
-                <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">12 /Bạn có từng bị bướu cổ không?  </label><br>
-                    <input type="radio" id="goitre" value="true" style="margin-top: 10px;">
-                    <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="goitre" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="query_hyperthyroid" name="query_hyperthyroid" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">13 /Bạn có từng được chẩn đoán có khối u không?   </label><br>
-                    <input type="radio" id="tumor" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">10 /Bạn có đang sử dụng lithium không?  </label><br>
+                    <input type="radio" id="lithium" name="lithium" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="tumor" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="lithium" name="lithium" value="f" style="margin-top: 10px;">
+                    <label for="0" style="font-size: 16px;">Không</label>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="font-size: 18px; color: #555;">11 /Bạn có từng bị bướu cổ không?  </label><br>
+                    <input type="radio" id="goitre" name="goitre" value="t" style="margin-top: 10px;">
+                    <label for="1" style="font-size: 16px;">Có</label><br>
+                    <input type="radio" id="goitre" name="goitre" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">14 /Bạn có từng được chẩn đoán suy tuyến yên không?  </label><br>
-                    <input type="radio" id="hypopituitary" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">12 /Bạn có từng được chẩn đoán có khối u không?   </label><br>
+                    <input type="radio" id="tumor" name="tumor" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="hypopituitary" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="tumor" name="tumor" value="f" style="margin-top: 10px;">
+                    <label for="0" style="font-size: 16px;">Không</label>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="font-size: 18px; color: #555;">13 /Bạn có từng được chẩn đoán suy tuyến yên không?  </label><br>
+                    <input type="radio" id="hypopituitary" name="hypopituitary" value="t" style="margin-top: 10px;">
+                    <label for="1" style="font-size: 16px;">Có</label><br>
+                    <input type="radio" id="hypopituitary" name="hypopituitary" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">15 /Bạn có tiền sử bệnh tâm thần không?   </label><br>
-                    <input type="radio" id="psych" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">14 /Bạn có tiền sử bệnh tâm thần không?   </label><br>
+                    <input type="radio" id="psych" name="psych" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="psych" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="psych" name="psych" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">16 /Bạn đã từng đo mức TSH chưa?  </label><br>
-                    <input type="radio" id="TSH_measured" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">15 /Bạn đã từng đo mức TSH chưa?  </label><br>
+                    <input type="radio" id="TSH_measured" name="TSH_measured" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="TSH_measured" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="TSH_measured" name="TSH_measured" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div class="mb-3">
-                    <label style="font-size: 18px; color: #555" class="form-label">17/ Mức TSH của bạn là ?</label>
+                    <label style="font-size: 18px; color: #555" class="form-label">16/ Mức TSH của bạn là ?</label>
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <input type="text" id="TSH" class="form-control" aria-describedby="passwordHelpInline">
@@ -172,15 +181,15 @@
                 </div><br>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">18 /Bạn đã từng đo mức T3 chưa? </label><br>
-                    <input type="radio" id="T3_measured" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">17 /Bạn đã từng đo mức T3 chưa? </label><br>
+                    <input type="radio" id="T3_measured" name="T3_measured" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="T3_measured" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="T3_measured" name="T3_measured" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div class="mb-3"></div>
-                    <label style="font-size: 18px; color: #555" class="form-label">19/ Mức T3 của bạn là ?</label>
+                    <label style="font-size: 18px; color: #555" class="form-label">18/ Mức T3 của bạn là ?</label>
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <input type="text" id="T3" class="form-control" aria-describedby="passwordHelpInline">
@@ -188,15 +197,15 @@
                 </div><br>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">20 /Bạn đã từng đo mức TT4 chưa? </label><br>
-                    <input type="radio" id="TT4_measured" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">19 /Bạn đã từng đo mức TT4 chưa? </label><br>
+                    <input type="radio" id="TT4_measured" name="TT4_measured" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="TT4_measured" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="TT4_measured" name="TT4_measured" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div class="mb-3"></div>
-                <label style="font-size: 18px; color: #555" class="form-label">21/ Mức T4 của bạn là ?</label>
+                <label style="font-size: 18px; color: #555" class="form-label">20/ Mức TT4 của bạn là ?</label>
                 <div class="row g-3 align-items-center">
                     <div class="col-auto">
                         <input type="text" id="TT4" class="form-control" aria-describedby="passwordHelpInline">
@@ -204,87 +213,132 @@
                 </div><br>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">22 /Bạn đã từng đo mức TT4 chưa? </label><br>
-                    <input type="radio" id="product" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">21 /Bạn đã từng đo mức T4U chưa? </label><br>
+                    <input type="radio" id="T4U_measured" name="T4U_measured" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="product" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="T4U_measured" name="T4U_measured" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div class="mb-3"></div>
-                <label  style="font-size: 18px; color: #555" class="form-label">23/ Mức TT4 của bạn là ?</label>
+                <label  style="font-size: 18px; color: #555" class="form-label">22/ Mức T4U của bạn là ?</label>
                 <div class="row g-3 align-items-center">
                     <div class="col-auto">
-                        <input type="text" id="age" class="form-control" aria-describedby="passwordHelpInline">
+                        <input type="text" id="T4U" class="form-control" aria-describedby="passwordHelpInline">
                     </div>
                 </div><br>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">25 /Bạn đã từng đo chỉ số FTI chưa?  </label><br>
-                    <input type="radio" id="product" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">23 /Bạn đã từng đo chỉ số FTI chưa?  </label><br>
+                    <input type="radio" id="FTI_measured" name="FTI_measured" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="product" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="FTI_measured" name="FTI_measured" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div class="mb-3"></div>
-                <label  class="form-label"  style="font-size: 18px; color: #555" >26/ Chỉ số FTI của bạn là bao nhiêu?
+                <label  class="form-label"  style="font-size: 18px; color: #555" >24/ Chỉ số FTI của bạn là bao nhiêu?
                 </label>
                 <div class="row g-3 align-items-center">
                     <div class="col-auto"> 
-                        <input type="text" id="age" class="form-control" aria-describedby="passwordHelpInline">
+                        <input type="text" id="FTI" class="form-control" aria-describedby="passwordHelpInline">
                     </div>
                 </div><br>
 
                 <div style="margin-bottom: 20px;">
-                    <label style="font-size: 18px; color: #555;">27 /Bạn đã từng đo mức TBG chưa?</label><br>
-                    <input type="radio" id="product" value="true" style="margin-top: 10px;">
+                    <label style="font-size: 18px; color: #555;">25 /Bạn đã từng đo mức TBG chưa?</label><br>
+                    <input type="radio" id="TBG_measured" name="TBG_measured" value="t" style="margin-top: 10px;">
                     <label for="1" style="font-size: 16px;">Có</label><br>
-                    <input type="radio" id="product" value="false" style="margin-top: 10px;">
+                    <input type="radio" id="TBG_measured" name="TBG_measured" value="f" style="margin-top: 10px;">
                     <label for="0" style="font-size: 16px;">Không</label>
                 </div>
 
                 <div class="mb-3"></div>
-                <label  class="form-label"  style="font-size: 18px; color: #555" >28/ Chỉ số TBG của bạn là bao nhiêu?
+                <label  class="form-label"  style="font-size: 18px; color: #555" >26/ Chỉ số TBG của bạn là bao nhiêu?
                 </label>
                 <div class="row g-3 align-items-center">
                     <div class="col-auto"> 
-                        <input type="text" id="age" class="form-control" aria-describedby="passwordHelpInline">
+                        <input type="text" id="TBG" class="form-control" aria-describedby="passwordHelpInline">
                     </div>
                 </div><br>
+
                   <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: Khôngne; border-radius: 5px; font-size: 16px; cursor: pointer;">Gửi Khảo Sát</button>
               </form>
           </div>
         </main>
-
+        <div class="modal fade" id="jsonModal" tabindex="-1" aria-labelledby="jsonModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="jsonModalLabel">Kết quả</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <pre id="jsonData"></pre>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
         <script>
-            document.getElementById('predictionForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = {
-                age: document.getElementById('age').value,
-                TSH: document.getElementById('TSH').value,
-                T3: document.getElementById('T3').value,
-                TT4: document.getElementById('TT4').value,
-                T4U: document.getElementById('T4U').value,
-                FTI: document.getElementById('FTI').value,
-                TBG: document.getElementById('TBG').value
-            };
+            $(document).ready(function() {
+                $('#predictionForm').submit(function(event) {
+                    event.preventDefault();
+                    var formData = {
+                        'age': $('#age').val() || "?",
+                        'sex': $('#sex').val() || "?",
+                        'on thyroxine': $('#on_thyroxine').val() || "?",
+                        'query on thyroxine': $('#query_on_thyroxine').val() || "?",
+                        'on antithyroid medication': $('#on_antithyroid_medication').val() || "?",
+                        'sick': $('#sick').val() || "?",
+                        'pregnant': $('#pregnant').val() || "?",
+                        'thyroid surgery': $('#thyroid_surgery').val() || "?",
+                        'I131 treatment': $('#I131_treatment').val() || "?",
+                        'query hypothyroid': $('#query_hypothyroid').val() || "?",
+                        'query hyperthyroid': $('#query_hyperthyroid').val() || "?",
+                        'lithium': $('#lithium').val() || "?",
+                        'goitre': $('#goitre').val() || "?",
+                        'tumor': $('#tumor').val() || "?",
+                        'hypopituitary': $('#hypopituitary').val() || "?",
+                        'psych': $('#psych').val() || "?",
+                        'TSH measured': $('#TSH_measured').val() || "?",
+                        'TSH': $('#TSH').val() || "?",
+                        'T3 measured': $('#T3_measured').val() || "?",
+                        'T3': $('#T3').val() || "?",
+                        'TT4 measured': $('#TT4_measured').val() || "?",
+                        'TT4': $('#TT4').val() || "?",
+                        'T4U measured': $('#T4U_measured').val() || "?",
+                        'T4U': $('#T4U').val() || "?",
+                        'FTI measured': $('#FTI_measured').val() || "?",
+                        'FTI': $('#FTI').val() || "?",
+                        'TBG measured': $('#TBG_measured').val() || "?",
+                        'TBG': $('#TBG').val() || "?"
+                    };
 
-            fetch('/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').innerText = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                console.error('Error:', error);
+                    var jsonData = { nn: 0, stacking: 1, svm: 1, tree: 1 };
+
+                    function showModalWithJSON(data) {
+                        $('#jsonData').text(JSON.stringify(data, null, 2)); 
+                        $('#jsonModal').modal('show'); 
+                    }
+
+                    $.ajax({
+                        url: '/submit',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(formData),
+                        success: function(data) {
+                            console.log(data)
+                            showModalWithJSON(data)
+                        },
+                        error: function(error) {
+                            console.error('Error:', error);
+                        }
+                    });
+                });
             });
-        });
         </script>
     </body>
 </html>

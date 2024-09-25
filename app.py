@@ -20,13 +20,11 @@ def PointScale():
     scalers = joblib.load('./artifacts/scalers.pkl')
 
     data = pd.DataFrame([request.get_json()])
-    print("Dữ liệu đầu vào:", data)
-
     for column in data.columns:
-            try:
-                data[column] = label_encoders[column].transform(data[column])
-            except ValueError:
-                data[column] = label_encoders[column].fit_transform(data[column])
+        try:
+            data[column] = label_encoders[column].transform(data[column])
+        except ValueError:
+            data[column] = label_encoders[column].fit_transform(data[column])
 
     for column in data.columns:
         if column in ['age', 'TSH', 'T3', 'TT4', 'T4U', 'FTI', 'TBG']:
@@ -36,17 +34,15 @@ def PointScale():
             except ValueError:
                 data[column] = mm.fit_transform(data[column])
 
-    print("Dữ liệu mã hóa:\n", data.to_string())
-
     svm_pred = svm.predict(data)
     tree_pred = tree.predict(data)
     nn_predict = nn.predict(data)
     stacking_predict = stacking.predict(data)
     result = {
-        'svm': int(svm_pred[0]),
-        'tree': int(tree_pred[0]),
-        'nn': int(nn_predict[0]),
-        'stacking': int(stacking_predict[0])
+        'Svm': int(svm_pred[0]),
+        'Decision tree': int(tree_pred[0]),
+        'Neutral network': int(nn_predict[0]),
+        'Stacking': int(stacking_predict[0])
     }
 
     return result, 200
