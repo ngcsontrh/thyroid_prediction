@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hiện dự đoán</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Dự đoán bệnh lý tuyến giáp</h1>
+        <form id="predictionForm">
+            <div class="form-group">
+                <label for="age">Tuổi</label>
+                <input type="number" class="form-control" id="age" required>
+            </div>
+            <div class="form-group">
+                <label for="TSH">TSH</label>
+                <input type="number" class="form-control" id="TSH" required>
+            </div>
+            <div class="form-group">
+                <label for="T3">T3</label>
+                <input type="number" class="form-control" id="T3" required>
+            </div>
+            <div class="form-group">
+                <label for="TT4">TT4</label>
+                <input type="number" class="form-control" id="TT4" required>
+            </div>
+            <div class="form-group">
+                <label for="T4U">T4U</label>
+                <input type="number" class="form-control" id="T4U" required>
+            </div>
+            <div class="form-group">
+                <label for="FTI">FTI</label>
+                <input type="number" class="form-control" id="FTI" required>
+            </div>
+            <div class="form-group">
+                <label for="TBG">TBG</label>
+                <input type="number" class="form-control" id="TBG" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Gửi</button>
+        </form>
+        <h2 class="mt-5">Kết quả Dự đoán</h2>
+        <pre id="result"></pre>
+    </div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = {
+                age: document.getElementById('age').value,
+                TSH: document.getElementById('TSH').value,
+                T3: document.getElementById('T3').value,
+                TT4: document.getElementById('TT4').value,
+                T4U: document.getElementById('T4U').value,
+                FTI: document.getElementById('FTI').value,
+                TBG: document.getElementById('TBG').value
+            };
+
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
