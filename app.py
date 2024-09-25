@@ -39,11 +39,12 @@ def PointScale():
     nn_predict = nn.predict(data)
     stacking_predict = stacking.predict(data)
     result = {
-        'Svm': int(svm_pred[0]),
-        'Decision tree': int(tree_pred[0]),
-        'Neutral network': int(nn_predict[0]),
-        'Stacking': int(stacking_predict[0])
+        'Svm': "Có" if svm_pred[0] == 1 else "Không",
+        'Decision tree': "Có" if tree_pred[0] == 1 else "Không",
+        'Neutral network': "Có" if nn_predict[0] == 1 else "Không",
+        'Stacking': "Có" if stacking_predict[0] == 1 else "Không"
     }
+
 
     return result, 200
 
