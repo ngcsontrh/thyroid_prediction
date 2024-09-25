@@ -44,9 +44,7 @@ def PointScale():
         'Neutral network': "Có" if nn_predict[0] == 1 else "Không",
         'Stacking': "Có" if stacking_predict[0] == 1 else "Không"
     }
-
-
     return result, 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
